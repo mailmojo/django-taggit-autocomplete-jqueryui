@@ -1,0 +1,6 @@
+README.txt
+django_taggit_autocomplete_jqueryui.egg-info/PKG-INFO
+django_taggit_autocomplete_jqueryui.egg-info/SOURCES.txt
+django_taggit_autocomplete_jqueryui.egg-info/dependency_links.txt
+django_taggit_autocomplete_jqueryui.egg-info/top_level.txt
+taggit_autocomplete_jqueryui/__init__.py
