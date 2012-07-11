@@ -13,7 +13,10 @@ class TagAutocomplete(Input):
 
     class Media:
         css = {
-            'all': ('%s/css/jquery-ui-1.8.20.custom.css' % MEDIA_URL, )
+            'all': (
+                '%s/css/jquery-ui-1.8.20.custom.css' % MEDIA_URL,
+                '%s/css/autocomplete.css' % MEDIA_URL,
+            )
         }
         js = (
             '%s/js/jquery-ui-1.8.20.custom.min.js' % MEDIA_URL,
@@ -34,8 +37,11 @@ class TagAutocomplete(Input):
 
         html = u'<ul class="tags">'
         for tag in tags:
-            html += (u'<li data-tag="%(name)s">%(name)s</li>' %
-                    {'name': tag.name})
+            html += (u'''
+                <li data-tag="%(name)s">
+                    <span class="name">%(name)s</span>
+                    <a class="remove" href="#">X</a>
+                </li>''' % {'name': tag.name})
         html += '</ul>'
         html += super(TagAutocomplete, self).render(name, value, attrs)
         html += u'<input type="text" id="%s_autocomplete"/>' % attrs['id']
@@ -43,10 +49,11 @@ class TagAutocomplete(Input):
         js = u'''
             <script type="text/javascript">
                 django.jQuery(document).ready(function($) {
+                    Taggit.init('#%s_autocomplete');
                     $("#%s_autocomplete").autocomplete({
                         source: "%s",
                         select: Taggit.autocomplete
                     });
                 });
-            </script>''' % (attrs['id'], json_view)
+            </script>''' % (attrs['id'], attrs['id'], json_view)
         return mark_safe("\n".join([html, js]))
