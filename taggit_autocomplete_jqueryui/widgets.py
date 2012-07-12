@@ -35,7 +35,7 @@ class TagAutocomplete(Input):
 
         json_view = reverse('taggit_autocomplete_jqueryui_tag_list')
 
-        html = u'<ul class="tags">'
+        html = u'<div class="selector"><ul class="tags">'
         for tag in tags:
             html += (u'''
                 <li data-tag="%(name)s">
@@ -44,7 +44,7 @@ class TagAutocomplete(Input):
                 </li>''' % {'name': tag.name})
         html += '</ul>'
         html += super(TagAutocomplete, self).render(name, value, attrs)
-        html += u'<input type="text" id="%s_autocomplete"/>' % attrs['id']
+        html += u'<input type="text" id="%s_autocomplete"/></div>' % attrs['id']
 
         js = u'''
             <script type="text/javascript">
