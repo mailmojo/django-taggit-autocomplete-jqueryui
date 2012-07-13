@@ -14,13 +14,13 @@ class TagAutocomplete(Input):
     class Media:
         css = {
             'all': (
-                '%s/css/jquery-ui-1.8.20.custom.css' % MEDIA_URL,
-                '%s/css/autocomplete.css' % MEDIA_URL,
+                'taggit_autocomplete_jqueryui/css/jquery-ui-1.8.20.custom.css',
+                'taggit_autocomplete_jqueryui/css/autocomplete.css',
             )
         }
         js = (
-            '%s/js/jquery-ui-1.8.20.custom.min.js' % MEDIA_URL,
-            '%s/js/autocomplete.js' % MEDIA_URL,
+            'taggit_autocomplete_jqueryui/js/jquery-ui-1.8.20.custom.min.js',
+            'taggit_autocomplete_jqueryui/js/autocomplete.js',
         )
 
     def render(self, name, value, attrs=None):
