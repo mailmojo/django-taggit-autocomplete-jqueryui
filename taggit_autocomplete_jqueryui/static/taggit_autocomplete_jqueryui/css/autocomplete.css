@@ -1,0 +1,60 @@
+
+#content-main ul.tags {
+	margin-left: 0;
+	padding-left: 0;
+}
+.tags li {
+	display: block;
+	float: left;
+	margin-right: 6px;
+	margin-bottom: 5px;
+	padding: 2px 6px;
+	border: solid 1px #ccc;
+	background: #7CA0C7 url(../img/admin/default-bg.gif) top left repeat-x;
+	color: #ffffff;
+	font-size: 12px;
+	list-style-type: none;
+
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+}
+
+.tags li .remove {
+	display: inline-block;
+	margin-left: 5px;
+	line-height: 11px;
+	font-size: 11px;
+	color: #444;
+	background-color: #ddd;
+	padding: 0 5px;
+
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+}
+
+.tags p.help {
+	clear: both;
+}
+
+.ui-autocomplete-input {
+	width: 120px;
+}
+
+.ui-menu-item {
+	list-style-type: none;
+}
+
+/* Micro clearfix */
+.tags:before,
+.tags:after {
+    content: " ";
+    display: table;
+}
+.tags:after {
+    clear: both;
+}
+.tags {
+	*zoom: 1;
+}
