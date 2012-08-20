@@ -24,6 +24,7 @@ class TagAutocomplete(Input):
         )
 
     def render(self, name, value, attrs=None):
+        tags = []
         if value is not None and not isinstance(value, basestring):
             # value contains a list a TaggedItem instances
             # Here we retrieve a comma-delimited list of tags
