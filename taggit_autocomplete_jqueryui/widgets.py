@@ -49,12 +49,10 @@ class TagAutocomplete(Input):
 
         js = u'''
             <script type="text/javascript">
-                django.jQuery(document).ready(function($) {
-                    Taggit.init('#%s_autocomplete');
-                    $("#%s_autocomplete").autocomplete({
-                        source: "%s",
-                        select: Taggit.autocomplete
-                    });
-                });
-            </script>''' % (attrs['id'], attrs['id'], json_view)
+                (function (root) {
+                    root.taggit_init = root.taggit_init || [];
+                    root.taggit_init.push(['#%s_autocomplete', '%s']);
+                })(window);
+            </script>''' % (attrs['id'], json_view)
         return mark_safe("\n".join([html, js]))
+

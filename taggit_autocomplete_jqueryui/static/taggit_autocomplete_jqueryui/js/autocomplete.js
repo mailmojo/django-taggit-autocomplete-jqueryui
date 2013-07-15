@@ -1,4 +1,5 @@
 (function (root, $) {
+
 	root.Taggit = (function () {
 		var
 			$hidden,
@@ -77,4 +78,35 @@
 			}
 		};
 	})();
-})(window, django.jQuery);
+
+	/*
+	 * Initialize a widget based on a definition containing the input element
+	 * selector and the URL for the backend endpoint to retrieve tags from.
+	 */
+	function auto_init (selector, endpoint) {
+		root.Taggit.init(selector);
+        $(selector).autocomplete({
+            source: endpoint,
+            select: root.Taggit.autocomplete
+        });
+	}
+
+	/*
+	 * Check for init queue set up before this file was loaded, and
+	 * run auto-initialization of each defined widget.
+	 */
+    if (root.taggit_init) {
+        $.each(root.taggit_init, function (i, defn) {
+            auto_init(defn[0], defn[1]);
+        });
+    }
+
+	// Handle additions to the auto-init queue directly after this file is loaded
+	root.taggit_init = {
+		push: function (defn) {
+			auto_init(defn[0], defn[1]);
+		}
+	};
+
+})(window, window.jQuery || django.jQuery);
+
