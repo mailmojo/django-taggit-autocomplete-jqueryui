@@ -1,0 +1,2 @@
+include *.txt
+recursive-include taggit_autocomplete_jqueryui/static *.css *.js *.png
