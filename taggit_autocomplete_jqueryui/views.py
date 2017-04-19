@@ -17,4 +17,4 @@ def tag_list_view(request):
     except MultiValueDictKeyError:
         tags = []
     return HttpResponse(json.dumps(list(tags), ensure_ascii=False),
-            mimetype='application/json')
+                        content_type='application/json')
