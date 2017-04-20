@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import json
 from django.db.models.loading import cache
 from django.http import HttpResponse

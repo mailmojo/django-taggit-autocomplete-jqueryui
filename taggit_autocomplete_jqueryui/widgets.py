@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from django.forms.widgets import Input
 from django.core.urlresolvers import reverse
 from django.utils.safestring import mark_safe
@@ -25,7 +24,7 @@ class TagAutocomplete(Input):
 
     def render(self, name, value, attrs=None):
         tags = []
-        if value is not None and not isinstance(value, basestring):
+        if value is not None and not isinstance(value, str):
             # value contains a list a TaggedItem instances
             # Here we retrieve a comma-delimited list of tags
             # suitable for editing by the user
@@ -36,18 +35,18 @@ class TagAutocomplete(Input):
 
         json_view = reverse('taggit_autocomplete_jqueryui_tag_list')
 
-        html = u'<div class="selector"><ul class="tags">'
+        html = '<div class="selector"><ul class="tags">'
         for tag in tags:
-            html += (u'''
+            html += ('''
                 <li data-tag="%(name)s">
                     <span class="name">%(name)s</span>
                     <a class="remove" href="#">X</a>
                 </li>''' % {'name': tag.name})
         html += '</ul>'
         html += super(TagAutocomplete, self).render(name, value, attrs)
-        html += u'<input type="text" id="%s_autocomplete"/></div>' % attrs['id']
+        html += '<input type="text" id="%s_autocomplete"/></div>' % attrs['id']
 
-        js = u'''
+        js = '''
             <script type="text/javascript">
                 (function (root) {
                     root.taggit_init = root.taggit_init || [];
@@ -55,4 +54,3 @@ class TagAutocomplete(Input):
                 })(window);
             </script>''' % (attrs['id'], json_view)
         return mark_safe("\n".join([html, js]))
-
