@@ -39,7 +39,7 @@ class TagAutocomplete(Input):
                 <li data-tag="%(name)s">
                     <span class="name">%(name)s</span>
                     <a class="remove" href="#">X</a>
-                </li>''' % {'name': tag.name})
+                </li>''' % {'name': tag})
         html += '</ul>'
         html += super(TagAutocomplete, self).render(name, value, attrs)
         html += '<input type="text" id="%s_autocomplete"/></div>' % attrs['id']
