@@ -49,15 +49,16 @@
 			init: function (inputSelector) {
 				var $input = $(inputSelector);
 				$hidden = $('#' + $input.attr('id').replace('_autocomplete', ''));
+				$hidden.attr('type', 'hidden');
 				$taglist = $hidden.parent().children('.tags');
 
 				// Hooks up event listenere to enable remove
 				$taglist.click(remove);
 
 				// Adds enter key event on autocomplete input
-				$input[$.browser.safari || $.browser.msie ?
-						'keydown' : 'keypress'](function (e) {
-					if (e.keyCode === 13) {
+				$input.on('keydown', function (e) {
+					// Check `keyCode` too for legacy Chrome and Safari support.
+					if (e.key === 'Enter' || e.keyCode === 13) {
 						e.preventDefault();
 						addTags($(e.target));
 					}
@@ -108,5 +109,4 @@
 		}
 	};
 
-})(window, window.jQuery || django.jQuery);
-
+})(window, window.django.jQuery || window.jQuery);

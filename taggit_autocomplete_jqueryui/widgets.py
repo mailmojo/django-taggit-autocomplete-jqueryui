@@ -8,17 +8,15 @@ MEDIA_URL = '/media/taggit_autocomplete_jqueryui'
 
 
 class TagAutocomplete(Input):
-    input_type = 'hidden'
-
     class Media:
         css = {
             'all': (
-                'taggit_autocomplete_jqueryui/css/jquery-ui-1.8.20.custom.css',
+                'taggit_autocomplete_jqueryui/css/jquery-ui-1.12.1.custom.min.css',
                 'taggit_autocomplete_jqueryui/css/autocomplete.css',
             )
         }
         js = (
-            'taggit_autocomplete_jqueryui/js/jquery-ui-1.8.20.custom.min.js',
+            'taggit_autocomplete_jqueryui/js/jquery-ui-1.12.1.custom.min.js',
             'taggit_autocomplete_jqueryui/js/autocomplete.js',
         )
 
